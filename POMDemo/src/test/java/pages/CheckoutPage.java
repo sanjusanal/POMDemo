@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class CheckoutPage {
 	@FindBy(id="first-name")
@@ -16,7 +17,8 @@ public class CheckoutPage {
 	WebElement cnt;
 	@FindBy(id="finish")
 	WebElement finish;
-	
+	@FindBy(xpath ="//h2[contains(text(),'Thank you for your order!')]")
+	WebElement Msg;
 	public CheckoutPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -26,6 +28,9 @@ public class CheckoutPage {
 		postCode.sendKeys(code);
 		cnt.click();
 		finish.click();
+	}
+	public boolean isOrderSuccess() {
+		return Msg.isDisplayed();
 	}
 
 }

@@ -55,6 +55,7 @@ public class PlaceOrderTest {
 	@Test(priority = 5)
 	public void information() {
 		ckPage.information("Sanju", "Sanal", "123345");
+		Assert.assertTrue(ckPage.isOrderSuccess());
 		
 	}
 	
